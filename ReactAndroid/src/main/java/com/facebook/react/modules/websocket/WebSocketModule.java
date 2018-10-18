@@ -160,6 +160,11 @@ public final class WebSocketModule extends ReactContextBaseJavaModule {
           public void onFailure(WebSocket webSocket, Throwable t, Response response) {
             notifyWebSocketFailed(id, t.getMessage());
           }
+          
+          @Override
+          public void onClosing(WebSocket webSocket, int code, String reason) {
+              webSocket.close(code, reason);
+          }
 
           @Override
           public void onMessage(WebSocket webSocket, String text) {
